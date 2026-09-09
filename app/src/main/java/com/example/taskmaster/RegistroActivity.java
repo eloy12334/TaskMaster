@@ -1,5 +1,6 @@
 package com.example.taskmaster;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -47,10 +48,27 @@ public class RegistroActivity extends AppCompatActivity {
             // Obtenemos la contraseña ingresada
             String password = etPassword.getText().toString();
 
-            // Comprobamos que los campos no estén vacíos
-            if (!correo.isEmpty() && !password.isEmpty()
+            // Validamos que los campos estén completos
+            // y que el correo tenga un formato válido
+            if (!correo.isEmpty()
+                    && !password.isEmpty()
                     && Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
 
+                // Abrimos SharedPreferences para guardar los datos
+                SharedPreferences preferencias =
+                        getSharedPreferences("usuarios", MODE_PRIVATE);
+
+                // Editamos los datos que vamos a guardar
+                SharedPreferences.Editor editor = preferencias.edit();
+
+                // Guardamos correo y contraseña
+                editor.putString("correo", correo);
+                editor.putString("password", password);
+
+                // Confirmamos el guardado
+                editor.apply();
+
+                // Mostramos mensaje
                 Toast.makeText(
                         RegistroActivity.this,
                         "Cuenta creada correctamente",
@@ -67,9 +85,10 @@ public class RegistroActivity extends AppCompatActivity {
 
             } else {
 
+                // Mostramos error si los datos no cumplen la validación
                 Toast.makeText(
                         RegistroActivity.this,
-                        "Complete todos los campos",
+                        "Ingrese un correo válido y complete la contraseña",
                         Toast.LENGTH_SHORT
                 ).show();
             }

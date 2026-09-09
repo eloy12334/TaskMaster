@@ -3,7 +3,8 @@ package com.example.taskmaster;
 // Importamos Intent para poder cambiar de Activity
 import android.content.Intent;
 
-// Importamos Bundle, necesario para el método onCreate
+// Importamos Bundle, necesario para el método_onCreate
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 // Importamos View para trabajar con los eventos de los botones
@@ -56,25 +57,47 @@ public class MainActivity extends AppCompatActivity {
         tvRegistro = findViewById(R.id.tvRegistro);
         btnRegistro = findViewById(R.id.btnRegistro);
 
-        // Evento del botón Ingresar
+        // boton iniciar sesión
         btnIngresar.setOnClickListener((View view) -> {
 
-            // Obtenemos el texto del correo
+            // Obtenemos los datos ingresados
             String correo = etCorreo.getText().toString();
-
-            // Obtenemos el texto de la contraseña
             String password = etPassword.getText().toString();
 
-            // Validamos los datos
-            if (correo.equals("admin@gmail.com") && password.equals("123456")) {
+            // Abrimos los datos guardados del registro
+            SharedPreferences preferencias =
+                    getSharedPreferences("usuarios", MODE_PRIVATE);
 
-                // Si los datos son correctos, vamos al menú principal
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            // Recuperamos el correo guardado
+            String correoGuardado =
+                    preferencias.getString("correo", "");
+
+            // Recuperamos la contraseña guardada
+            String passwordGuardada =
+                    preferencias.getString("password", "");
+
+            // Comprobamos si es la cuenta admin
+            boolean admin = correo.equals("admin@gmail.com")
+                    && password.equals("123456");
+
+            // Comprobamos si es una cuenta creada en Registro
+            boolean usuarioRegistrado = !correo.isEmpty()
+                    && !password.isEmpty()
+                    && correo.equals(correoGuardado)
+                    && password.equals(passwordGuardada);
+
+            // Si es admin o usuario registrado, ingresamos
+            if (admin || usuarioRegistrado) {
+
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        MenuActivity.class
+                );
+
                 startActivity(intent);
 
             } else {
 
-                // Si los datos son incorrectos, mostramos un mensaje
                 Toast.makeText(
                         MainActivity.this,
                         "Correo o contraseña incorrectos",
