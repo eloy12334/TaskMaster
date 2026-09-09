@@ -27,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     Button btnTareas;
     Button btnNuevaTarea;
     Button btnSalir;
+    Button btnValorarApp;
 
 
     @Override
@@ -45,6 +46,7 @@ public class MenuActivity extends AppCompatActivity {
 
         btnTareas = findViewById(R.id.btnTareas);
         btnNuevaTarea = findViewById(R.id.btnNuevaTarea);
+        btnValorarApp = findViewById(R.id.btnValorar);
         btnSalir = findViewById(R.id.btnSalir);
 
 
@@ -85,6 +87,18 @@ public class MenuActivity extends AppCompatActivity {
             // Volvemos a la pantalla de Login
             finish();
 
+        });
+
+        // Evento del botón Valorar App
+        btnValorarApp.setOnClickListener((View view) -> {
+
+            Intent intent =
+                    new Intent(
+                            MenuActivity.this,
+                            ValorarActivity.class
+                    );
+
+            startActivity(intent);
         });
 
     }
