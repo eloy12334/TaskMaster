@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TaskMaster</string>
+
+    //spinner
+    <string-array name="Categorias">
+        <item>Seleccione una categoría</item>
+        <item>Estudio</item>
+        <item>Trabajo</item>
+        <item>Personal</item>
+        <item>Juegos</item>
+        <item>Otros</item>
+    </string-array>
+
 </resources>

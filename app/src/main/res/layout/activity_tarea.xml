@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TareaActivity">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Nueva tarea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="549dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo">
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la tarea:" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombra tu tarea"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/tvCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccione su categoria:" />
+
+        <Spinner
+            android:id="@+id/spCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Categorias" />
+
+        <TextView
+            android:id="@+id/tvPrioridad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prioridad:" />
+
+        <RadioGroup
+            android:id="@+id/rgPrioridad"
+            android:layout_width="match_parent"
+            android:layout_height="144dp">
+
+            <RadioButton
+                android:id="@+id/rbAlta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alta" />
+
+            <RadioButton
+                android:id="@+id/rbMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="media" />
+
+            <RadioButton
+                android:id="@+id/rbBaja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Baja" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cbImportante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="importante?" />
+
+        <Button
+            android:id="@+id/btnCrear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear tarea" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
