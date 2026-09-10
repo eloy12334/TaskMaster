@@ -3,8 +3,10 @@ package com.example.taskmaster;
 // Importamos Intent para poder cambiar de Activity
 import android.content.Intent;
 
-// Importamos Bundle, necesario para el método_onCreate
+// Importamos SharedPreferences para recuperar el tema seleccionado
 import android.content.SharedPreferences;
+
+// Importamos Bundle, necesario para el método onCreate
 import android.os.Bundle;
 
 // Importamos View para trabajar con los eventos de los botones
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar = findViewById(R.id.btnIngresar);
         tvRegistro = findViewById(R.id.tvRegistro);
         btnRegistro = findViewById(R.id.btnRegistro);
+
 
         // boton iniciar sesión
         btnIngresar.setOnClickListener((View view) -> {
@@ -115,4 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
 }
+

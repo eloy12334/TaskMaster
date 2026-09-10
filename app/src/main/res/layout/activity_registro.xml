@@ -1,56 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".RegistroActivity">
 
     <LinearLayout
-        android:layout_width="376dp"
-        android:layout_height="212dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:gravity="center"
+            android:text="Crear cuenta"
+            android:textColor="#444444"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ingrese su correo:" />
+            android:text="Correo electrónico"
+            android:textColor="#555555"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etCorreo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#BDBDBD"
+            android:hint="Ingresa tu correo"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Cree su contraseña" />
+            android:text="Contraseña"
+            android:textColor="#555555"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#BDBDBD"
+            android:hint="Crea tu contraseña"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btnRegistro"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="registrarse" />
+            android:layout_height="50dp"
+            android:text="Crear cuenta"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

@@ -52,6 +52,7 @@ public class RegistroActivity extends AppCompatActivity {
             // y que el correo tenga un formato válido
             if (!correo.isEmpty()
                     && !password.isEmpty()
+                    && password.length() >= 6
                     && Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
 
                 // Abrimos SharedPreferences para guardar los datos
