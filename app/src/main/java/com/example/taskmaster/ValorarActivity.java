@@ -1,6 +1,7 @@
 package com.example.taskmaster;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -12,11 +13,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Locale;
+
 public class ValorarActivity extends AppCompatActivity {
 
     // Declaramos los componentes
     RatingBar ratingApp;
     Button btnValorar;
+
+    TextToSpeech tts;
 
 
     @Override
@@ -35,9 +40,13 @@ public class ValorarActivity extends AppCompatActivity {
 
         btnValorar = findViewById(R.id.btnValorar);
 
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(Locale.ITALY);
+            }
+        });
 
 
-        // Evento del botón Valorar App
         btnValorar.setOnClickListener((View view) -> {
 
             // Obtenemos la cantidad de estrellas
@@ -46,16 +55,47 @@ public class ValorarActivity extends AppCompatActivity {
             // Comprobamos que haya una valoración
             if (estrellas == 0) {
 
-                Toast.makeText(ValorarActivity.this, "Seleccione una valoración",
+                Toast.makeText(
+                        ValorarActivity.this,
+                        "Seleccione una valoración",
                         Toast.LENGTH_SHORT
                 ).show();
 
+                // Configuración de la voz
+                tts.setPitch(1.0f);
+                tts.setSpeechRate(1.0f);
+
+                // Mensaje hablado
+                tts.speak(
+                        "Seleccione una valoración",
+                        TextToSpeech.QUEUE_ADD,
+                        null,
+                        "TTS_MSG_ID"
+                );
+
             } else {
 
-                Toast.makeText(ValorarActivity.this,
-                        "Gracias por valorar TaskMaster con " + estrellas + " estrellas",
+                String mensaje = "Gracias por valorar TaskMaster con "
+                        + estrellas
+                        + " estrellas";
+
+                Toast.makeText(
+                        ValorarActivity.this,
+                        mensaje,
                         Toast.LENGTH_LONG
                 ).show();
+
+                // Configuración de la voz
+                tts.setPitch(1.0f);
+                tts.setSpeechRate(1.0f);
+
+                // Mensaje hablado
+                tts.speak(
+                        mensaje,
+                        TextToSpeech.QUEUE_ADD,
+                        null,
+                        "TTS_MSG_ID"
+                );
             }
         });
     }

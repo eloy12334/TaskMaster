@@ -55,6 +55,7 @@ public class RegistroActivity extends AppCompatActivity {
                     && password.length() >= 6
                     && Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
 
+
                 // Abrimos SharedPreferences para guardar los datos
                 SharedPreferences preferencias =
                         getSharedPreferences("usuarios", MODE_PRIVATE);
@@ -86,10 +87,23 @@ public class RegistroActivity extends AppCompatActivity {
 
             } else {
 
-                // Mostramos error si los datos no cumplen la validación
+                // Validar correo
+                if (etCorreo.getText().toString().trim().isEmpty()) {
+                    etCorreo.setError("Ingrese un correo");
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(
+                        etCorreo.getText().toString().trim()
+                ).matches()) {
+                    etCorreo.setError("Ingrese un correo válido (..@..com)");
+                }
+
+                // Validar contraseña
+                if (etPassword.getText().toString().trim().isEmpty()) {
+                    etPassword.setError("Ingrese una contraseña minimo 6 caracteres");
+                }
+
                 Toast.makeText(
                         RegistroActivity.this,
-                        "Ingrese un correo válido y complete la contraseña",
+                        "Complete los campos correctamente",
                         Toast.LENGTH_SHORT
                 ).show();
             }

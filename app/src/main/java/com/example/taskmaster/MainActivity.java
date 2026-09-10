@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
 
+
+                etCorreo.setError("Correo o contraseña incorrectos");
+                etPassword.setError("Correo o contraseña incorrectos");
+
                 Toast.makeText(
                         MainActivity.this,
                         "Correo o contraseña incorrectos",
